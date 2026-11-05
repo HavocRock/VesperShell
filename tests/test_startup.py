@@ -89,7 +89,8 @@ class StartupTests(unittest.TestCase):
         exe=Path(self.temp.name)/'python.exe';pyw=exe.with_name('pythonw.exe');pyw.touch()
         with patch.object(startup.sys,'executable',str(exe)),patch.object(startup.sys,'frozen',False,create=True):
             spec=startup.launch_spec()
-        self.assertEqual(spec['target'],str(pyw));self.assertIn('main.py',spec['arguments'])
+        # Compare file identity: Windows temporary paths may use 8.3 aliases.
+        self.assertTrue(pyw.samefile(spec['target']));self.assertIn('main.py',spec['arguments'])
     def test_non_windows(self):
         with patch.object(startup,'windows_supported',return_value=False):
             self.assertFalse(startup.is_enabled_for_this_install())

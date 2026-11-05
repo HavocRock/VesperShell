@@ -14,7 +14,8 @@ class HelpTests(unittest.TestCase):
             docs.mkdir()
             manual = docs / "VesperShell-Help.html"
             manual.write_text("OK", encoding="utf-8")
-            self.assertEqual(locate_help_file(executable=str(exe), frozen=True), manual)
+            # Compare file identity: Windows temporary paths may use 8.3 aliases.
+            self.assertTrue(manual.samefile(locate_help_file(executable=str(exe), frozen=True)))
 
     def test_source_tree_manual(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -24,8 +25,8 @@ class HelpTests(unittest.TestCase):
             docs.mkdir()
             manual = docs / 'VesperShell-Help.html'
             manual.write_text('OK', encoding='utf-8')
-            self.assertEqual(locate_help_file(executable=str(root/'python.exe'), frozen=False,
-                module_file=str(root/'vespershell'/'helpfile.py')), manual)
+            self.assertTrue(manual.samefile(locate_help_file(executable=str(root/'python.exe'), frozen=False,
+                module_file=str(root/'vespershell'/'helpfile.py'))))
 
     def test_missing_help_does_not_guess_remote_address(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -39,7 +40,7 @@ class HelpTests(unittest.TestCase):
             expected=root/'docs'/'VesperShell-Help.html'
             expected.write_text('installed', encoding='utf-8')
             (root/'VesperShell-Help.html').write_text('fallback', encoding='utf-8')
-            self.assertEqual(locate_help_file(executable=str(root/'app.exe'), frozen=True), expected)
+            self.assertTrue(expected.samefile(locate_help_file(executable=str(root/'app.exe'), frozen=True)))
 
 
 if __name__ == '__main__':
