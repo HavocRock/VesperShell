@@ -1,0 +1,2 @@
+PASS: packaged startup, current-user pipe acknowledgement, native tool style, close-to-hide, second-launch restore, Unicode persistence.
+NOT VERIFIED: packaged Quit menu, visual tray/taskbar/Alt+Tab, Explorer restart, physical gestures, clean-PC installation.

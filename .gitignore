@@ -1,0 +1,24 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+build/
+dist/
+notes.json
+settings.json
+*.log
+.DS_Store
+
+# Never commit users' private notes or backup files.
+notes*.json
+settings*.json
+notes-pre-*.json
+*.lock
+note-backups/
+theme_upgrade_backup_v020.json
+*.bak
+*.tmp
+Thumbs.db
+
+schedule_upgrade_backup_v030.json
