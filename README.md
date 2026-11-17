@@ -82,3 +82,7 @@ Issues and pull requests are welcome if the maintainer enables them. Include a c
 ## Licence and credit
 
 VesperShell application source is [MIT licensed](LICENSE). Packaging tools and third-party components retain their own licence conditions; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Original turtle artwork was made for this project.
+
+### Development contributions
+
+HavocRock directed the project's goals, requirements, design decisions, and hands-on testing. ChatGPT assisted with software development, debugging, testing procedures, and documentation. Project limitations and testing results are documented to distinguish observed behaviour from unverified claims.
